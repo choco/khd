@@ -569,7 +569,7 @@ CreateAndPostKeyEvent(uint32_t Flags, CGKeyCode Key, bool Pressed)
 {
     CGEventRef KeyEvent = CGEventCreateKeyboardEvent(NULL, Key, Pressed);
 
-    CGEventSetFlags(KeyEvent, Flags);
+    CGEventSetFlags(KeyEvent, Flags | CGEventGetFlags(KeyEvent));
     CGEventPost(kCGHIDEventTap, KeyEvent);
 
     CFRelease(KeyEvent);
